@@ -61,6 +61,34 @@
     pointer-events: none; z-index: 9998; opacity: 0.4;
   }
 
+  /* ── Hero Pillars ── */
+  .hero-pillars {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-pillar {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(18px, 2.8vw, 42px);
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-shadow:
+      0 0 8px rgba(209,84,26,0.5),
+      0 0 20px rgba(209,84,26,0.25);
+  }
+
+  .hero-pillar-sep {
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(10px, 1vw, 16px);
+    color: var(--border2);
+    letter-spacing: 0;
+    opacity: 0.6;
+  }
+
   /* ── Strength Glow ── */
   .strength-glow {
     color: #FF8C00;
@@ -316,8 +344,10 @@
   }
 
   .hero-training-letter {
-    display: inline-block;
+    display: inline;
     color: #FF8C00;
+    -webkit-text-fill-color: #FF8C00;
+    -webkit-tap-highlight-color: transparent;
   }
 
   @keyframes trainingFlicker {
@@ -1767,10 +1797,16 @@
   <div class="hero-eyebrow">PREMIUM 1:1 CALISTHENICS COACHING</div>
 
   <h1 class="hero-title">
-   <span class="hero-training-wrap"><span class="hero-training-letter" data-l="C">C</span><span class="hero-training-letter" data-l="A">A</span><span class="hero-training-letter" data-l="L">L</span><span class="hero-training-letter" data-l="I">I</span><span class="hero-training-letter" data-l="S">S</span><span class="hero-training-letter" data-l="T">T</span><span class="hero-training-letter" data-l="H">H</span><span class="hero-training-letter" data-l="E">E</span><span class="hero-training-letter" data-l="N">N</span><span class="hero-training-letter" data-l="I">I</span><span class="hero-training-letter" data-l="C">C</span><span class="hero-training-letter" data-l="S">S</span></span>
-   <span class="strength-glow"> STRENGTH</span> IS THE PRODUCT OF PRECISION,<br>
-   STRUCTURE AND INTENT.<br>
+   TRUE <span class="hero-training-wrap"><span class="hero-training-letter" data-l="C">C</span><span class="hero-training-letter" data-l="A">A</span><span class="hero-training-letter" data-l="L">L</span><span class="hero-training-letter" data-l="I">I</span><span class="hero-training-letter" data-l="S">S</span><span class="hero-training-letter" data-l="T">T</span><span class="hero-training-letter" data-l="H">H</span><span class="hero-training-letter" data-l="E">E</span><span class="hero-training-letter" data-l="N">N</span><span class="hero-training-letter" data-l="I">I</span><span class="hero-training-letter" data-l="C">C</span><span class="hero-training-letter" data-l="S">S</span></span> MASTERY<br>
+   IS THE BYPRODUCT OF:
   </h1>
+  <div class="hero-pillars">
+    <span class="hero-pillar">PRECISION</span>
+    <span class="hero-pillar-sep">—</span>
+    <span class="hero-pillar">STRUCTURE</span>
+    <span class="hero-pillar-sep">—</span>
+    <span class="hero-pillar">INTENT</span>
+  </div>
   </section>
 
 
@@ -1872,7 +1908,7 @@
 ════════════════════════════════════════ -->
 <section style="border-bottom: 1px solid var(--border);">
   <div class="section">
-    <div class="section-label reveal">03 — CLIENT RESULTS</div>
+    <div class="section-label reveal">CLIENT RESULTS</div>
     <h2 class="section-title reveal">THE PROOF<br>IS IN THE REPS.</h2>
     <p class="section-subtitle reveal" style="letter-spacing:2px;">
       Real athletes. Real transformations.<br>
@@ -1995,7 +2031,7 @@
 ════════════════════════════════════════ -->
 <section style="border-bottom: 1px solid var(--border); overflow:hidden;">
   <div class="section" style="padding-bottom:0;">
-    <div class="section-label reveal">03B — TESTIMONIALS</div>
+    <div class="section-label reveal">TESTIMONIALS</div>
     <h2 class="section-title reveal">THEY SAID IT.<br>NOT US.</h2>
     <p class="section-subtitle reveal" style="letter-spacing:2px;">
       No scripts. No paid endorsements.<br>
@@ -2354,7 +2390,7 @@
       </div>
 
       <div class="coach-content">
-        <div class="section-label">04 — THE COACH</div>
+        <div class="section-label">THE COACH</div>
         <h2 class="section-title">BUILT DIFFERENT.<br>COACHES DIFFERENT.</h2>
         <p class="section-subtitle" style="letter-spacing:2px;">6'2". 190lbs.<br>Told calisthenics wasn't for him.<br>He disagreed.</p>
 
@@ -2430,7 +2466,7 @@
 ════════════════════════════════════════ -->
 <section id="apply">
   <div class="section">
-    <div class="section-label reveal">05 — APPLICATION</div>
+    <div class="section-label reveal">APPLICATION</div>
     <h2 class="section-title reveal">APPLY TO WORK<br>WITH ANTON.</h2>
     <p class="section-subtitle reveal" style="letter-spacing:2px;">
       This is not a sign-up form.<br>
@@ -2450,9 +2486,9 @@
   <div class="footer-sub-inner">
     <div class="footer-contact">
       <div class="footer-sub-label">CONTACT</div>
-      <a href="/cdn-cgi/l/email-protection#6d0c0319021e050c430e0c01041e19050803040e1e2d0a000c0401430e0200" class="footer-link">
+      <a href="mailto:antosha.calisthenics@gmail.com" class="footer-link">
         <span class="footer-icon">✉</span>
-        <span class="__cf_email__" data-cfemail="41202f352e3229206f22202d28323529242f28223201262c20282d6f222e2c">[email&#160;protected]</span>
+        antosha.calisthenics@gmail.com
       </a>
 <a href="https://www.instagram.com/antonthnx/" target="_blank" rel="noopener" class="footer-link">
   <span class="footer-icon">◈</span>
