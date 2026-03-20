@@ -2214,7 +2214,9 @@ content="anton.png"
 
 </head>
 <body>
-  <div class="container d-flex flex-wrap justify-content-start gap-3"><div id="cursor"></div>
+  <div style="flex: 1 1 300px;">
+    <p>
+  <div class="container d-flex flex-column flex-md-row flex-wrap gap-3">
 <div id="page-progress-slider">
   <div id="page-progress-track">
     <div id="page-progress-fill"></div>
@@ -2292,8 +2294,8 @@ content="anton.png"
 
   </div>
 </section>
-
-
+</p>
+</div>
 
 <!-- ════════════════════════════════════════
      SECTION 2 — VSL
@@ -2345,6 +2347,8 @@ content="anton.png"
 <!-- ════════════════════════════════════════
      SECTION 3A — CLIENT RESULTS (BEFORE/AFTER SLIDER)
 ════════════════════════════════════════ -->
+<div style="flex: 1 1 300px;">
+  <p>
 <section style="border-bottom: 1px solid var(--border);">
   <div class="section">
     <div class="section-label reveal">CLIENT RESULTS</div>
@@ -3958,8 +3962,15 @@ document.querySelectorAll('.tvcard').forEach(card => {
 });
 </script>
 </div>
+</p>
+</div>
+
+</div>
+
 </body>
+
 <script>
+  
 document.querySelectorAll('.tvcard').forEach(card => {
   const video = card.querySelector('video');
   const btn = card.querySelector('.tvcard-play-btn');
