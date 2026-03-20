@@ -1104,7 +1104,7 @@ content="anton.png"
     overflow: hidden;
   }
 
-  .tvcard-video {
+  .tvcard-video { background: #000;
     position: absolute;
     inset: 0;
     width: 100%;
@@ -3914,3 +3914,76 @@ function showFeedback(msg, success) {
   });
 })();
 </script>
+<script>
+document.querySelectorAll('.tvcard').forEach(card => {
+  const video = card.querySelector('video');
+  const btn = card.querySelector('.tvcard-play-btn');
+
+  if (!video || !btn) return;
+
+  btn.addEventListener('click', () => {
+    if (video.paused) {
+
+      // pause all others
+      document.querySelectorAll('video').forEach(v => {
+        if (v !== video) {
+          v.pause();
+          const otherBtn = v.closest('.tvcard')?.querySelector('.tvcard-play-btn');
+          if (otherBtn) {
+            otherBtn.classList.remove('is-playing');
+            otherBtn.innerHTML = '<span class="tvcard-play-icon">▶</span> PLAY';
+          }
+        }
+      });
+
+      // play this one
+      video.play();
+      btn.classList.add('is-playing');
+      btn.innerHTML = '<span class="tvcard-play-icon">❚❚</span> PAUSE';
+
+    } else {
+      video.pause();
+      btn.classList.remove('is-playing');
+      btn.innerHTML = '<span class="tvcard-play-icon">▶</span> PLAY';
+    }
+  });
+});
+</script>
+</body>
+<script>
+document.querySelectorAll('.tvcard').forEach(card => {
+  const video = card.querySelector('video');
+  const btn = card.querySelector('.tvcard-play-btn');
+
+  if (!video || !btn) return;
+
+  btn.addEventListener('click', () => {
+    if (video.paused) {
+
+      // pause all others
+      document.querySelectorAll('video').forEach(v => {
+        if (v !== video) {
+          v.pause();
+          const otherBtn = v.closest('.tvcard')?.querySelector('.tvcard-play-btn');
+          if (otherBtn) {
+            otherBtn.classList.remove('is-playing');
+            otherBtn.innerHTML = '<span class="tvcard-play-icon">▶</span> PLAY';
+          }
+        }
+      });
+
+      // play this one
+      video.play();
+      btn.classList.add('is-playing');
+      btn.innerHTML = '<span class="tvcard-play-icon">❚❚</span> PAUSE';
+
+    } else {
+      video.pause();
+      btn.classList.remove('is-playing');
+      btn.innerHTML = '<span class="tvcard-play-icon">▶</span> PLAY';
+    }
+  });
+});
+</script>
+
+</html>
