@@ -2057,6 +2057,31 @@ content="anton.png"
   }
 </style>
 
+@media (min-width: 601px) {
+    .tscroll-inner .tvcard { flex: 0 0 220px; }
+    .results-video-scroll .tvcard { flex: 0 0 260px; }
+    .results-mini-ba { aspect-ratio: 9/16; }
+    .submax-cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .tscroll-inner .tvcard { flex: 0 0 85vw; scroll-snap-align: center; }
+    .ba-toggle-btn { font-size: 11px; padding: 10px 14px; bottom: 10px; width: calc(100% - 24px); max-width: none; }
+    .results-mini-play-btn { top: 8px; right: 8px; min-width: 70px; font-size: 9px; }
+    .hero-stats-row { display: flex; flex-direction: column; gap: 16px; }
+    .qualifier-strip { grid-template-columns: 1fr; }
+    .system-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .coach-stat-grid { grid-template-columns: 1fr 1fr; }
+    .video-wrap { padding: 28px 20px; }
+    .section { padding: 52px 20px; }
+    nav { padding: 14px; }
+    footer { padding: 28px 20px; }
+    .footer-sub { padding: 28px 20px; }
+    .footer-sub-inner { flex-direction: column; gap: 24px; }
+    .cta-banner { padding: 60px 20px; }
+    .cta-banner-title { font-size: clamp(36px, 10vw, 60px); }
+  }
+  
 <style>
 /* ── Before/After Video Slider ── */
 .ba-video {
@@ -3123,6 +3148,7 @@ function primeScrollerVideo(video) {
   video.pause();
   video.currentTime = 0;
   video.playsInline = true;
+  video.muted = true;
   video.setAttribute('playsinline', '');
   video.setAttribute('preload', 'metadata');
   video.removeAttribute('autoplay');
@@ -3682,8 +3708,8 @@ function showFeedback(msg, success) {
     syncBaSliderUi(slider);
   }
 
-  function ensureMiniBaPlayButton(slider) {
-    if (!slider.classList.contains('results-mini-ba')) return null;
+ function ensureMiniBaPlayButton(slider) {
+    if (!slider.classList.contains('results-mini-ba') && !slider.closest('.tscroll-inner')) return null;
     var existing = slider.querySelector('.results-mini-play-btn');
     if (existing) return existing;
 
@@ -3726,10 +3752,12 @@ function showFeedback(msg, success) {
 
     syncBaSliderUi(slider);
 
-    btn.addEventListener('click', function(e) {
+   btn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       toggleBaSlider(slider);
+      var inner = slider.closest('.tscroll-inner');
+      if (inner) inner.dispatchEvent(new CustomEvent('ba-interaction'));
     });
 
     if (playBtn) {
