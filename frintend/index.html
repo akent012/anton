@@ -2057,32 +2057,33 @@ content="anton.png"
   }
 </style>
 
-@media (min-width: 601px) {
-    .tscroll-inner .tvcard { flex: 0 0 220px; }
-    .results-video-scroll .tvcard { flex: 0 0 260px; }
-    .results-mini-ba { aspect-ratio: 9/16; }
-    .submax-cards { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .tscroll-inner .tvcard { flex: 0 0 85vw; scroll-snap-align: center; }
-    .ba-toggle-btn { font-size: 11px; padding: 10px 14px; bottom: 10px; width: calc(100% - 24px); max-width: none; }
-    .results-mini-play-btn { top: 8px; right: 8px; min-width: 70px; font-size: 9px; }
-    .hero-stats-row { display: flex; flex-direction: column; gap: 16px; }
-    .qualifier-strip { grid-template-columns: 1fr; }
-    .system-grid { grid-template-columns: 1fr; }
-    .results-grid { grid-template-columns: 1fr; }
-    .coach-stat-grid { grid-template-columns: 1fr 1fr; }
-    .video-wrap { padding: 28px 20px; }
-    .section { padding: 52px 20px; }
-    nav { padding: 14px; }
-    footer { padding: 28px 20px; }
-    .footer-sub { padding: 28px 20px; }
-    .footer-sub-inner { flex-direction: column; gap: 24px; }
-    .cta-banner { padding: 60px 20px; }
-    .cta-banner-title { font-size: clamp(36px, 10vw, 60px); }
-  }
-  
 <style>
+
+@media (min-width: 601px) {
+  .tscroll-inner .tvcard { flex: 0 0 220px; }
+  .results-video-scroll .tvcard { flex: 0 0 260px; }
+  .results-mini-ba { aspect-ratio: 9/16; }
+  .submax-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .tscroll-inner .tvcard { flex: 0 0 85vw; scroll-snap-align: center; }
+  .ba-toggle-btn { font-size: 11px; padding: 10px 14px; bottom: 10px; width: calc(100% - 24px); max-width: none; }
+  .results-mini-play-btn { top: 8px; right: 8px; min-width: 70px; font-size: 9px; }
+  .hero-stats-row { display: flex; flex-direction: column; gap: 16px; }
+  .qualifier-strip { grid-template-columns: 1fr; }
+  .system-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .coach-stat-grid { grid-template-columns: 1fr 1fr; }
+  .video-wrap { padding: 28px 20px; }
+  .section { padding: 52px 20px; }
+  nav { padding: 14px; }
+  footer { padding: 28px 20px; }
+  .footer-sub { padding: 28px 20px; }
+  .footer-sub-inner { flex-direction: column; gap: 24px; }
+  .cta-banner { padding: 60px 20px; }
+  .cta-banner-title { font-size: clamp(36px, 10vw, 60px); }
+}
+
 /* ── Before/After Video Slider ── */
 .ba-video {
   position: absolute;
@@ -3045,6 +3046,8 @@ content="anton.png"
   80% { transform: translate(-1px, 1px) skew(-2deg); }
 }
 </style>
+</div>
+</section>
 
 <footer>
   <span class="footer-brand">ANTONTHNX</span>
@@ -3820,8 +3823,14 @@ function showFeedback(msg, success) {
     var originalMarkup = inner.innerHTML;
     inner.innerHTML += originalMarkup;
     inner.querySelectorAll('video').forEach(primeScrollerVideo);
-    inner.querySelectorAll('.tvcard').forEach(registerTestimonialCard);
-    inner.querySelectorAll('.ba-slider').forEach(registerBaSlider);
+    inner.querySelectorAll('.tvcard').forEach(function(card) {
+      card.dataset.videoReady = '';
+      registerTestimonialCard(card);
+    });
+    inner.querySelectorAll('.ba-slider').forEach(function(slider) {
+      slider.dataset.baReady = '';
+      registerBaSlider(slider);
+    });
 
     var speed = inner.closest('.results-video-scroll') ? 0.55 : 0.6;
     var isPaused = false;
