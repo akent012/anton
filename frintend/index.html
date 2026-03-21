@@ -2768,6 +2768,18 @@ img, video, iframe, canvas {
     display: block !important;
   }
 }
+
+.section {
+  padding-bottom: 0 !important;
+}
+
+.scroll-hint {
+  margin-top: 8px;
+}
+
+.tscroll-track {
+  margin-top: 5px;
+}
 </style>
 <script id="results-mobile-arrow-hotfix">
 document.addEventListener('DOMContentLoaded', function () {
@@ -2870,10 +2882,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- ════════════════════════════════════════
      SECTION 2 — VSL
 ════════════════════════════════════════ -->
-<div style="flex: 1 1 100%;"
+<div style="flex: 1 1 100%;">
 <div class="full-section" id="video-section">
   <div class="video-wrap reveal">
-    <div class="video-label">— WATCH BEFORE YOU APPLY</div>
+    <div class="video-label">— WATCH BEFORE YOU APPLY —</div>
     <h3 class="video-title">THE SUBMAX METHOD<br>EXPLAINED.</h3>
     <p class="video-sub" style="letter-spacing:2px;">
       Watch Anton break down the system.<br>
@@ -2893,7 +2905,7 @@ document.addEventListener('DOMContentLoaded', function () {
       NO API KEY REQUIRED — plain iframe, no Google key needed.
       ════════════════════════════════════════
     -->
-      <div style="flex: 1 1 100%;"
+      <div style="flex: 1 1 100%;">
 <div class="video-container">
   <iframe
     id="yt-iframe"
@@ -3170,18 +3182,23 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="tscroll-inner">
 
       <!-- 1. KENTO -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="kento-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">KENTO</div>
+    <div class="tvcard">
+      <div class="tvcard-video-wrap">
+        <video class="tvcard-video" playsinline preload="metadata"
+          poster="https://res.cloudinary.com/dmckkb1rn/video/upload/so_1/v1774112837/reid-testimony_sxlbyg.jpg">
+          <source
+            src="https://res.cloudinary.com/dmckkb1rn/video/upload/f_auto,q_auto/v1774112837/reid-testimony_sxlbyg.mp4"
+            type="video/mp4">
+        </video>
       </div>
+    
+      <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
+        <span class="tvcard-play-icon" aria-hidden="true">▶</span>
+        <span class="tvcard-play-label">Play</span>
+      </button>
+    
+      <div class="tvcard-name">REID</div>
+    </div>
 
       <!-- 2. JOSH -->
       <div class="tvcard">
