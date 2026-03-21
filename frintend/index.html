@@ -2803,6 +2803,105 @@ img, video, iframe, canvas {
   margin-top: 12px;
   text-align: center;
 }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+  aspect-ratio: 1 / 1;
+}
+
+.ba-video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.ba-video.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.ba-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.result-info {
+  margin-top: 14px;
+}
+
+.result-name {
+  margin: 0 0 8px 0;
+}
+
+.result-desc {
+  margin: 0;
+}
+
+.ba-toggle-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.ba-toggle-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.66);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.ba-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.ba-toggle-icon {
+  font-size: 10px;
+}
+
+.ba-toggle-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
 </style>
 <script id="results-mobile-arrow-hotfix">
 document.addEventListener('DOMContentLoaded', function () {
@@ -2965,131 +3064,131 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div class="results-grid reveal">
 
-      <!-- RESULT 1 — KEVIN -->
-      <div class="result-card">
-        <div class="ba-slider" data-name="KEVIN">
-          <div class="ba-after ba-video" id="kevin-after">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Kevin/kevin-after.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <div class="ba-before ba-video" id="kevin-before">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Kevin/kevin-before.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <button class="ba-toggle-btn" type="button">
-            <span class="ba-toggle-icon">&#9654;</span>
-            <span class="ba-toggle-text">SEE AFTER</span>
-          </button>
-        </div>
-
-        <div class="result-info">
-          <div class="result-name">KEVIN</div>
-          <p class="result-desc">
-            <span style="color:var(--border2);font-size:11px;">
-              Add Kevin's transformation story here — what he struggled with, what changed, what he achieved.
-            </span>
-          </p>
-        </div>
+  <!-- RESULT 1 — KEVIN -->
+  <div class="result-card">
+    <div class="ba-slider" data-name="KEVIN">
+      <div class="ba-after ba-video" id="kevin-after">
+        <video muted playsinline preload="none" poster="Client Results/Kevin/kevin-after-thumb.png">
+          <source src="Client Results/Kevin/kevin-after.mp4" type="video/mp4">
+        </video>
       </div>
 
-      <!-- RESULT 2 — TORYN -->
-      <div class="result-card">
-        <div class="ba-slider" data-name="TORYN">
-          <div class="ba-after ba-video" id="toryn-after">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Toryn/toryn-after.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <div class="ba-before ba-video" id="toryn-before">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Toryn/toryn-before.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <button class="ba-toggle-btn" type="button">
-            <span class="ba-toggle-icon">&#9654;</span>
-            <span class="ba-toggle-text">SEE AFTER</span>
-          </button>
-        </div>
-
-        <div class="result-info">
-          <div class="result-name">TORYN</div>
-          <p class="result-desc">
-            <span style="color:var(--border2);font-size:11px;">
-              Add Toryn's transformation story here.
-            </span>
-          </p>
-        </div>
+      <div class="ba-before ba-video" id="kevin-before">
+        <video muted playsinline preload="none" poster="Client Results/Kevin/kevin-before-thumb.png">
+          <source src="Client Results/Kevin/kevin-before.mp4" type="video/mp4">
+        </video>
       </div>
 
-      <!-- RESULT 3 — JOSHUA -->
-      <div class="result-card">
-        <div class="ba-slider" data-name="JOSHUA">
-          <div class="ba-after ba-video" id="joshua-after">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Joshua/joshua-after.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <div class="ba-before ba-video" id="joshua-before">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Joshua/joshua-before.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <button class="ba-toggle-btn" type="button">
-            <span class="ba-toggle-icon">&#9654;</span>
-            <span class="ba-toggle-text">SEE AFTER</span>
-          </button>
-        </div>
-
-        <div class="result-info">
-          <div class="result-name">JOSHUA</div>
-          <p class="result-desc">
-            <span style="color:var(--border2);font-size:11px;">
-              Add Joshua's transformation story here.
-            </span>
-          </p>
-        </div>
-      </div>
-
-      <!-- RESULT 4 — BRAXTON -->
-      <div class="result-card">
-        <div class="ba-slider" data-name="BRAXTON">
-          <div class="ba-after ba-video" id="braxton-after">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Braxton/braxton-after.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <div class="ba-before ba-video" id="braxton-before">
-            <video autoplay muted loop playsinline preload="none">
-              <source src="Client Results/Braxton/braxton-before.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <button class="ba-toggle-btn" type="button">
-            <span class="ba-toggle-icon">&#9654;</span>
-            <span class="ba-toggle-text">SEE AFTER</span>
-          </button>
-        </div>
-
-        <div class="result-info">
-          <div class="result-name">BRAXTON</div>
-          <p class="result-desc">
-            <span style="color:var(--border2);font-size:11px;">
-              Add Braxton's transformation story here.
-            </span>
-          </p>
-        </div>
-      </div>
-
+      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
+        <span class="ba-toggle-icon">&#9654;</span>
+        <span class="ba-toggle-text">SEE AFTER</span>
+      </button>
     </div>
+
+    <div class="result-info">
+      <div class="result-name">KEVIN</div>
+      <p class="result-desc">
+        <span style="color:var(--border2);font-size:11px;">
+          Add Kevin's transformation story here — what he struggled with, what changed, what he achieved.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- RESULT 2 — TORYN -->
+  <div class="result-card">
+    <div class="ba-slider" data-name="TORYN">
+      <div class="ba-after ba-video" id="toryn-after">
+        <video muted playsinline preload="none" poster="Client Results/Toryn/toryn-after-thumb.png">
+          <source src="Client Results/Toryn/toryn-after.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="ba-before ba-video" id="toryn-before">
+        <video muted playsinline preload="none" poster="Client Results/Toryn/toryn-before-thumb.png">
+          <source src="Client Results/Toryn/toryn-before.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
+        <span class="ba-toggle-icon">&#9654;</span>
+        <span class="ba-toggle-text">SEE AFTER</span>
+      </button>
+    </div>
+
+    <div class="result-info">
+      <div class="result-name">TORYN</div>
+      <p class="result-desc">
+        <span style="color:var(--border2);font-size:11px;">
+          Add Toryn's transformation story here.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- RESULT 3 — JOSHUA -->
+  <div class="result-card">
+    <div class="ba-slider" data-name="JOSHUA">
+      <div class="ba-after ba-video" id="joshua-after">
+        <video muted playsinline preload="none" poster="Client Results/Joshua/joshua-after-thumb.png">
+          <source src="Client Results/Joshua/joshua-after.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="ba-before ba-video" id="joshua-before">
+        <video muted playsinline preload="none" poster="Client Results/Joshua/joshua-before-thumb.png">
+          <source src="Client Results/Joshua/joshua-before.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
+        <span class="ba-toggle-icon">&#9654;</span>
+        <span class="ba-toggle-text">SEE AFTER</span>
+      </button>
+    </div>
+
+    <div class="result-info">
+      <div class="result-name">JOSHUA</div>
+      <p class="result-desc">
+        <span style="color:var(--border2);font-size:11px;">
+          Add Joshua's transformation story here.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- RESULT 4 — BRAXTON -->
+  <div class="result-card">
+    <div class="ba-slider" data-name="BRAXTON">
+      <div class="ba-after ba-video" id="braxton-after">
+        <video muted playsinline preload="none" poster="Client Results/Braxton/braxton-after-thumb.png">
+          <source src="Client Results/Braxton/braxton-after.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="ba-before ba-video" id="braxton-before">
+        <video muted playsinline preload="none" poster="Client Results/Braxton/braxton-before-thumb.png">
+          <source src="Client Results/Braxton/braxton-before.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
+        <span class="ba-toggle-icon">&#9654;</span>
+        <span class="ba-toggle-text">SEE AFTER</span>
+      </button>
+    </div>
+
+    <div class="result-info">
+      <div class="result-name">BRAXTON</div>
+      <p class="result-desc">
+        <span style="color:var(--border2);font-size:11px;">
+          Add Braxton's transformation story here.
+        </span>
+      </p>
+    </div>
+  </div>
+
+</div>
   </div>
 </section>
 
@@ -4615,6 +4714,58 @@ document.querySelectorAll('.tvcard').forEach(card => {
       btn.innerHTML = '<span class="tvcard-play-icon">▶</span> PLAY';
     }
   });
+});
+</script>
+
+<script>
+document.querySelectorAll('.ba-slider').forEach((slider) => {
+  const beforeWrap = slider.querySelector('.ba-before');
+  const afterWrap = slider.querySelector('.ba-after');
+  const beforeVideo = beforeWrap.querySelector('video');
+  const afterVideo = afterWrap.querySelector('video');
+  const toggleBtn = slider.querySelector('.ba-toggle-btn');
+  const toggleText = toggleBtn.querySelector('.ba-toggle-text');
+
+  let showingAfter = false;
+
+  function safePlay(video) {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
+  }
+
+  function stopVideo(video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  function setState() {
+    if (showingAfter) {
+      beforeWrap.classList.remove('is-active');
+      afterWrap.classList.add('is-active');
+
+      stopVideo(beforeVideo);
+      safePlay(afterVideo);
+
+      toggleText.textContent = 'SEE BEFORE';
+    } else {
+      afterWrap.classList.remove('is-active');
+      beforeWrap.classList.add('is-active');
+
+      stopVideo(afterVideo);
+      safePlay(beforeVideo);
+
+      toggleText.textContent = 'SEE AFTER';
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    showingAfter = !showingAfter;
+    setState();
+  });
+
+  setState();
 });
 </script>
 
