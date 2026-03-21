@@ -2902,6 +2902,87 @@ img, video, iframe, canvas {
   letter-spacing: 1.3px;
   text-transform: uppercase;
 }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+  aspect-ratio: 1 / 1;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.ba-slider:active {
+  cursor: grabbing;
+}
+
+.ba-video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.25s ease;
+}
+
+.ba-video.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.ba-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.ba-slider::after {
+  content: "SWIPE";
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 3;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  pointer-events: none;
+}
+
+.result-info {
+  margin-top: 14px;
+}
+
+.result-name {
+  margin: 0 0 8px 0;
+}
+
+.result-desc {
+  margin: 0;
+}
 </style>
 <script id="results-mobile-arrow-hotfix">
 document.addEventListener('DOMContentLoaded', function () {
@@ -3062,19 +3143,19 @@ document.addEventListener('DOMContentLoaded', function () {
       No filters. No shortcuts.
     </p>
 
-    <div class="results-grid reveal">
+ <div class="results-grid reveal">
 
   <!-- RESULT 1 — KEVIN -->
   <div class="result-card">
     <div class="ba-slider" data-name="KEVIN">
       <div class="ba-after ba-video" id="kevin-after">
-        <video muted playsinline preload="none" poster="Client Results/Kevin/kevin-after-thumb.png">
+        <video muted playsinline preload="metadata" poster="Client Results/Kevin/kevin-after-thumb.png">
           <source src="Client Results/Kevin/kevin-after.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="ba-before ba-video" id="kevin-before">
-        <video muted playsinline preload="none" poster="Client Results/Kevin/kevin-before-thumb.png">
+      <div class="ba-before ba-video is-active" id="kevin-before">
+        <video muted playsinline preload="metadata" poster="Client Results/Kevin/kevin-before-thumb.png">
           <source src="Client Results/Kevin/kevin-before.mp4" type="video/mp4">
         </video>
       </div>
@@ -3094,13 +3175,13 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="result-card">
     <div class="ba-slider" data-name="TORYN">
       <div class="ba-after ba-video" id="toryn-after">
-        <video muted playsinline preload="none" poster="Client Results/Toryn/toryn-after-thumb.png">
+        <video muted playsinline preload="metadata" poster="Client Results/Toryn/toryn-after-thumb.png">
           <source src="Client Results/Toryn/toryn-after.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="ba-before ba-video" id="toryn-before">
-        <video muted playsinline preload="none" poster="Client Results/Toryn/toryn-before-thumb.png">
+      <div class="ba-before ba-video is-active" id="toryn-before">
+        <video muted playsinline preload="metadata" poster="Client Results/Toryn/toryn-before-thumb.png">
           <source src="Client Results/Toryn/toryn-before.mp4" type="video/mp4">
         </video>
       </div>
@@ -3120,13 +3201,13 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="result-card">
     <div class="ba-slider" data-name="JOSHUA">
       <div class="ba-after ba-video" id="joshua-after">
-        <video muted playsinline preload="none" poster="Client Results/Joshua/joshua-after-thumb.png">
+        <video muted playsinline preload="metadata" poster="Client Results/Joshua/joshua-after-thumb.png">
           <source src="Client Results/Joshua/joshua-after.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="ba-before ba-video" id="joshua-before">
-        <video muted playsinline preload="none" poster="Client Results/Joshua/joshua-before-thumb.png">
+      <div class="ba-before ba-video is-active" id="joshua-before">
+        <video muted playsinline preload="metadata" poster="Client Results/Joshua/joshua-before-thumb.png">
           <source src="Client Results/Joshua/joshua-before.mp4" type="video/mp4">
         </video>
       </div>
@@ -3146,13 +3227,13 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="result-card">
     <div class="ba-slider" data-name="BRAXTON">
       <div class="ba-after ba-video" id="braxton-after">
-        <video muted playsinline preload="none" poster="Client Results/Braxton/braxton-after-thumb.png">
+        <video muted playsinline preload="metadata" poster="Client Results/Braxton/braxton-after-thumb.png">
           <source src="Client Results/Braxton/braxton-after.mp4" type="video/mp4">
         </video>
       </div>
 
-      <div class="ba-before ba-video" id="braxton-before">
-        <video muted playsinline preload="none" poster="Client Results/Braxton/braxton-before-thumb.png">
+      <div class="ba-before ba-video is-active" id="braxton-before">
+        <video muted playsinline preload="metadata" poster="Client Results/Braxton/braxton-before-thumb.png">
           <source src="Client Results/Braxton/braxton-before.mp4" type="video/mp4">
         </video>
       </div>
@@ -4879,4 +4960,77 @@ document.querySelectorAll('.ba-slider').forEach((slider) => {
 });
 </script>
 
+
+<script>
+document.querySelectorAll('.ba-slider').forEach((slider) => {
+  const beforeWrap = slider.querySelector('.ba-before');
+  const afterWrap = slider.querySelector('.ba-after');
+  const beforeVideo = beforeWrap.querySelector('video');
+  const afterVideo = afterWrap.querySelector('video');
+
+  let showingAfter = false;
+  let startX = 0;
+  let isPointerDown = false;
+  const swipeThreshold = 40;
+
+  function playVideo(video) {
+    const p = video.play();
+    if (p !== undefined) p.catch(() => {});
+  }
+
+  function pauseVideo(video) {
+    video.pause();
+  }
+
+  function updateState() {
+    if (showingAfter) {
+      beforeWrap.classList.remove('is-active');
+      afterWrap.classList.add('is-active');
+      pauseVideo(beforeVideo);
+      playVideo(afterVideo);
+    } else {
+      afterWrap.classList.remove('is-active');
+      beforeWrap.classList.add('is-active');
+      pauseVideo(afterVideo);
+      playVideo(beforeVideo);
+    }
+  }
+
+  function handleSwipe(deltaX) {
+    if (deltaX < -swipeThreshold && !showingAfter) {
+      showingAfter = true;
+      updateState();
+    } else if (deltaX > swipeThreshold && showingAfter) {
+      showingAfter = false;
+      updateState();
+    }
+  }
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    handleSwipe(endX - startX);
+  });
+
+  slider.addEventListener('mousedown', (e) => {
+    isPointerDown = true;
+    startX = e.clientX;
+  });
+
+  slider.addEventListener('mouseup', (e) => {
+    if (!isPointerDown) return;
+    isPointerDown = false;
+    handleSwipe(e.clientX - startX);
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isPointerDown = false;
+  });
+
+  updateState();
+});
+</script>
 </html>
