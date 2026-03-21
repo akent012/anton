@@ -2780,6 +2780,29 @@ img, video, iframe, canvas {
 .tscroll-track {
   margin-top: 5px;
 }
+
+.tvcard-video-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+}
+
+.tvcard-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  border-radius: 18px;
+}
+
+.tvcard-name {
+  margin-top: 12px;
+  text-align: center;
+}
 </style>
 <script id="results-mobile-arrow-hotfix">
 document.addEventListener('DOMContentLoaded', function () {
@@ -3175,148 +3198,154 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </div>
 
-  <!-- Horizontal scroll track — full bleed -->
-  <div class="tscroll-track">
-    <button class="tscroll-nav-btn tscroll-btn-prev" id="tscroll-prev" aria-label="Previous">&#8249;</button>
-    <button class="tscroll-nav-btn tscroll-btn-next" id="tscroll-next" aria-label="Next">&#8250;</button>
-    <div class="tscroll-inner">
+ <!-- Horizontal scroll track — full bleed -->
+<div class="tscroll-track">
+  <button class="tscroll-nav-btn tscroll-btn-prev" id="tscroll-prev" aria-label="Previous">&#8249;</button>
+  <button class="tscroll-nav-btn tscroll-btn-next" id="tscroll-next" aria-label="Next">&#8250;</button>
 
-      <!-- 1. KENTO -->
+  <div class="tscroll-inner">
+
+    <!-- 1. KENTO -->
     <div class="tvcard">
-      <div class="tvcard-video-wrap">
-        <video class="tvcard-video" playsinline preload="metadata"
-          poster="https://res.cloudinary.com/dmckkb1rn/video/upload/so_1/v1774112837/reid-testimony_sxlbyg.jpg">
-          <source
-            src="https://res.cloudinary.com/dmckkb1rn/video/upload/f_auto,q_auto/v1774112837/reid-testimony_sxlbyg.mp4"
-            type="video/mp4">
-        </video>
+      <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788395?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="kento">
+        </iframe>
       </div>
-    
-      <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-        <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-        <span class="tvcard-play-label">Play</span>
-      </button>
-    
+      <div class="tvcard-name">KENTO</div>
+    </div>
+
+    <!-- 2. JOSH -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788204?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="josh">
+        </iframe>
+      </div>
+      <div class="tvcard-name">JOSH</div>
+    </div>
+
+    <!-- 3. STEVEN -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:178.89%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788362?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="steven">
+        </iframe>
+      </div>
+      <div class="tvcard-name">STEVEN</div>
+    </div>
+
+    <!-- 4. SAM -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788335?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="sam">
+        </iframe>
+      </div>
+      <div class="tvcard-name">SAM</div>
+    </div>
+
+    <!-- 5. TRISTAN -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788170?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="tristan">
+        </iframe>
+      </div>
+      <div class="tvcard-name">TRISTAN</div>
+    </div>
+
+    <!-- 6. REID -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788313?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="reid">
+        </iframe>
+      </div>
       <div class="tvcard-name">REID</div>
     </div>
 
-      <!-- 2. JOSH -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="josh-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">JOSH</div>
+    <!-- 7. GUS -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175789485?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="gus">
+        </iframe>
       </div>
-
-      <!-- 3. STEVEN -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="steven-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">STEVEN</div>
-      </div>
-
-      <!-- 4. SAM -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="sam-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">SAM</div>
-      </div>
-
-      <!-- 5. TRISTAN -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="tristan-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">TRISTAN</div>
-      </div>
-
-      <!-- 6. REID -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="reid-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">REID</div>
-      </div>
-
-      <!-- 7. GUS -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="gus-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">GUS</div>
-      </div>
-
-      <!-- 8. TORYN -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="toryn-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">TORYN</div>
-      </div>
-
-      <!-- 9. JOHN -->
-      <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" playsinline preload="metadata" poster="john-thumb.jpg">
-            <source src="WhatsApp Video 2026-03-19 at 11.44.41 PM.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="tvcard-play-btn" type="button" aria-pressed="false" aria-label="Play testimonial video">
-          <span class="tvcard-play-icon" aria-hidden="true">▶</span>
-          <span class="tvcard-play-label">Play</span>
-        </button>
-        <div class="tvcard-name">JOHN</div>
-      </div>
-
+      <div class="tvcard-name">GUS</div>
     </div>
-    <!-- Fade edges hint -->
-    <div class="tscroll-fade-left"></div>
-    <div class="tscroll-fade-right"></div>
+
+    <!-- 8. TORYN -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175788529?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="toryn">
+        </iframe>
+      </div>
+      <div class="tvcard-name">TORYN</div>
+    </div>
+
+    <!-- 9. JOHN -->
+    <div class="tvcard">
+      <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+        <iframe
+          class="tvcard-video"
+          src="https://player.vimeo.com/video/1175791935?title=0&byline=0&portrait=0&badge=0&autopause=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="john">
+        </iframe>
+      </div>
+      <div class="tvcard-name">JOHN</div>
+    </div>
+
   </div>
+
+  <!-- Fade edges hint -->
+  <div class="tscroll-fade-left"></div>
+  <div class="tscroll-fade-right"></div>
+</div>
 </section>
 
 
