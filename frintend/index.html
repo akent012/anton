@@ -3078,11 +3078,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <source src="Client Results/Kevin/kevin-before.mp4" type="video/mp4">
         </video>
       </div>
-
-      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
-        <span class="ba-toggle-icon">&#9654;</span>
-        <span class="ba-toggle-text">SEE AFTER</span>
-      </button>
     </div>
 
     <div class="result-info">
@@ -3109,11 +3104,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <source src="Client Results/Toryn/toryn-before.mp4" type="video/mp4">
         </video>
       </div>
-
-      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
-        <span class="ba-toggle-icon">&#9654;</span>
-        <span class="ba-toggle-text">SEE AFTER</span>
-      </button>
     </div>
 
     <div class="result-info">
@@ -3140,11 +3130,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <source src="Client Results/Joshua/joshua-before.mp4" type="video/mp4">
         </video>
       </div>
-
-      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
-        <span class="ba-toggle-icon">&#9654;</span>
-        <span class="ba-toggle-text">SEE AFTER</span>
-      </button>
     </div>
 
     <div class="result-info">
@@ -3171,11 +3156,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <source src="Client Results/Braxton/braxton-before.mp4" type="video/mp4">
         </video>
       </div>
-
-      <button class="ba-toggle-btn" type="button" aria-label="Toggle before and after">
-        <span class="ba-toggle-icon">&#9654;</span>
-        <span class="ba-toggle-text">SEE AFTER</span>
-      </button>
     </div>
 
     <div class="result-info">
@@ -3774,6 +3754,58 @@ document.addEventListener('DOMContentLoaded', function () {
   40% { transform: translate(-2px, -1px) skew(-3deg); }
   60% { transform: translate(1px, -2px) skew(2deg); }
   80% { transform: translate(-1px, 1px) skew(-2deg); }
+}
+
+.ba-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+  aspect-ratio: 1 / 1;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.ba-slider:active {
+  cursor: grabbing;
+}
+
+.ba-video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.ba-video.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.ba-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+/* small swipe hint */
+.ba-slider::after {
+  content: "SWIPE";
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 3;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.14);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  pointer-events: none;
 }
 </style>
 </div>
@@ -4763,6 +4795,84 @@ document.querySelectorAll('.ba-slider').forEach((slider) => {
   toggleBtn.addEventListener('click', () => {
     showingAfter = !showingAfter;
     setState();
+  });
+
+  setState();
+});
+</script>
+
+
+
+<script>
+document.querySelectorAll('.ba-slider').forEach((slider) => {
+  const beforeWrap = slider.querySelector('.ba-before');
+  const afterWrap = slider.querySelector('.ba-after');
+  const beforeVideo = beforeWrap.querySelector('video');
+  const afterVideo = afterWrap.querySelector('video');
+
+  let showingAfter = false;
+  let startX = 0;
+  let isDragging = false;
+  const swipeThreshold = 40;
+
+  function safePlay(video) {
+    const p = video.play();
+    if (p !== undefined) p.catch(() => {});
+  }
+
+  function stopVideo(video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  function setState() {
+    if (showingAfter) {
+      beforeWrap.classList.remove('is-active');
+      afterWrap.classList.add('is-active');
+
+      stopVideo(beforeVideo);
+      safePlay(afterVideo);
+    } else {
+      afterWrap.classList.remove('is-active');
+      beforeWrap.classList.add('is-active');
+
+      stopVideo(afterVideo);
+      safePlay(beforeVideo);
+    }
+  }
+
+  function handleSwipe(deltaX) {
+    if (deltaX < -swipeThreshold && !showingAfter) {
+      showingAfter = true;
+      setState();
+    } else if (deltaX > swipeThreshold && showingAfter) {
+      showingAfter = false;
+      setState();
+    }
+  }
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    handleSwipe(endX - startX);
+  });
+
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  slider.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    handleSwipe(e.clientX - startX);
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
   });
 
   setState();
