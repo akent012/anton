@@ -1665,6 +1665,23 @@
   @media (max-width: 768px) {
     body { cursor: auto; }
 
+    @keyframes trainingFlickerMobile {
+      0%    { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      27.0% { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      27.5% { opacity:0.15; text-shadow: none; }
+      28.0% { opacity:1; text-shadow: 0 0 5px #FF4500, 0 0 14px #FF4500, 0 0 25px rgba(255,69,0,0.5); }
+      28.5% { opacity:0.15; text-shadow: none; }
+      29.5% { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      62.0% { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      62.5% { opacity:0.15; text-shadow: none; }
+      63.0% { opacity:1; text-shadow: 0 0 5px #FF4500, 0 0 14px #FF4500, 0 0 25px rgba(255,69,0,0.5); }
+      63.5% { opacity:0.15; text-shadow: none; }
+      64.0% { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      64.5% { opacity:0.15; text-shadow: none; }
+      65.5% { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+      100%  { opacity:1; text-shadow: 0 0 4px #FF4500, 0 0 10px #FF4500, 0 0 20px rgba(255,69,0,0.4); }
+    }
+
     nav {
       position: fixed; top: 0; left: 0; right: 0; width: 100%;
       display: flex; flex-direction: row; align-items: center; justify-content: space-between;
@@ -1688,6 +1705,11 @@
     #hero > * { text-align: center !important; }
 
     .hero-training-wrap { display: inline; margin: 0; white-space: normal; }
+    .hero-training-wrap,
+    .hero-training-letter,
+    .strength-glow {
+      animation: trainingFlickerMobile 7.4s linear infinite !important;
+    }
     .hero-sub { margin: 22px auto 0; text-align: center !important; max-width: 100%; }
     .hero-tagline { font-size: 14px; max-width: 100%; padding: 0 8px; }
     .hero-accent-line { font-size: 11px; letter-spacing: 0.1em; padding: 10px 20px; margin-top: 24px; }
@@ -2792,6 +2814,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
   function primeScrollerVideo(video) {
     if (!video) return;
+    // Don't touch BA slider videos — their loop is managed by initBASlider
+    if (video.closest('.ba-slider')) return;
     video.autoplay = false;
     video.loop = false;
     video.pause();
@@ -2799,7 +2823,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     video.playsInline = true;
     video.muted = true;
     video.setAttribute('playsinline', '');
-    // Keep preload=none — lazy loader will inject sources when near viewport
     video.setAttribute('preload', 'none');
     video.removeAttribute('autoplay');
     video.removeAttribute('loop');
@@ -2869,7 +2892,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     card.dataset.videoReady = 'true';
     video.controls = false;
     video.autoplay = false;
-    video.loop = false;
+    // Don't override loop on BA slider videos
+    if (!video.closest('.ba-slider')) video.loop = false;
     video.muted = true;
     video.pause();
     video.currentTime = 0;
@@ -3472,6 +3496,7 @@ function initBASlider(slider) {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
+    video.setAttribute('loop', '');
     if (typeof window.activateVideo === 'function') window.activateVideo(video);
     var p = video.play();
     if (p) p.catch(function() { video.load(); video.play().catch(function(){}); });
