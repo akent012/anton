@@ -122,8 +122,25 @@
     background: rgba(0,0,0,0.88);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: none;
+    border-top: none;
     transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  /* Glowing orange separator line under the nav */
+  nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
+    box-shadow: 0 0 8px rgba(209,84,26,0.5), 0 0 20px rgba(209,84,26,0.2);
+    animation: navLineGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes navLineGlow {
+    0%, 100% { opacity: 0.7; box-shadow: 0 0 6px rgba(209,84,26,0.4), 0 0 14px rgba(209,84,26,0.15); }
+    50% { opacity: 1; box-shadow: 0 0 12px rgba(209,84,26,0.6), 0 0 28px rgba(209,84,26,0.25); }
   }
 
   nav.scrolled {
@@ -141,27 +158,28 @@
   .nav-brand:hover { opacity: 0.8; }
 
   .nav-cta {
-    background: transparent;
+    background: #000;
     color: var(--accent);
     font-family: 'DM Mono', monospace;
     font-size: 10px; letter-spacing: 2.5px;
     padding: 11px 28px;
-    border: 1px solid var(--accent);
+    border: 1px solid rgba(209,84,26,0.4);
     border-radius: 4px;
     cursor: none; text-decoration: none;
     display: inline-block;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
     outline: none;
     text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(209,84,26,0.15);
   }
 
   .nav-cta:hover,
   .nav-cta.aura-active {
-    background: var(--accent);
-    color: #000;
-    box-shadow: 0 0 20px rgba(209,84,26,0.4);
+    border-color: rgba(209,84,26,0.8);
+    color: #fff;
     transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(209,84,26,0.35), 0 0 40px rgba(209,84,26,0.12);
   }
 
   /* ══════════════════════════════════════
@@ -408,19 +426,22 @@
      BUTTONS
   ══════════════════════════════════════ */
   .btn-primary {
-    background: var(--accent); color: #000;
+    background: #000; color: var(--accent);
     font-family: 'DM Mono', monospace;
     font-size: 11px; letter-spacing: 2.5px; font-weight: 500;
-    padding: 18px 44px; border: none;
+    padding: 18px 44px;
+    border: 1px solid rgba(209,84,26,0.4);
     border-radius: var(--radius); cursor: none;
     text-decoration: none; display: inline-block;
     transition: all 0.3s ease;
     text-transform: uppercase;
+    box-shadow: 0 0 16px rgba(209,84,26,0.15), 0 0 4px rgba(209,84,26,0.1);
   }
   .btn-primary:hover {
-    background: #fff; color: #000;
+    border-color: rgba(209,84,26,0.8);
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(209,84,26,0.3);
+    box-shadow: 0 0 24px rgba(209,84,26,0.35), 0 0 48px rgba(209,84,26,0.15), 0 8px 24px rgba(0,0,0,0.3);
   }
 
   .btn-ghost {
@@ -435,8 +456,27 @@
     text-transform: uppercase;
   }
   .btn-ghost:hover {
-    border-color: var(--accent); color: var(--accent);
-    background: rgba(209,84,26,0.06);
+    border-color: rgba(209,84,26,0.5); color: var(--accent);
+    box-shadow: 0 0 12px rgba(209,84,26,0.1);
+  }
+
+  /* Dark variant for specific CTAs */
+  .btn-dark {
+    background: rgba(255,255,255,0.06); color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 2.5px; font-weight: 500;
+    padding: 18px 44px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius); cursor: none;
+    text-decoration: none; display: inline-block;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  .btn-dark:hover {
+    background: #fff; color: #000;
+    border-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255,255,255,0.1);
   }
 
   /* ══════════════════════════════════════
@@ -535,26 +575,27 @@
   .video-after-cta .btn-primary {
     background: #000;
     color: var(--accent);
-    border: 1.5px solid var(--accent);
+    border: 1px solid rgba(209,84,26,0.4);
     padding: 20px 52px;
     font-size: 12px;
     letter-spacing: 3px;
-    border-radius: 4px;
-    box-shadow:
-      0 0 12px rgba(209,84,26,0.35),
-      0 0 28px rgba(209,84,26,0.15),
-      inset 0 0 12px rgba(209,84,26,0.05);
+    border-radius: var(--radius);
+    box-shadow: 0 0 20px rgba(209,84,26,0.2), 0 0 6px rgba(209,84,26,0.15);
     transition: all 0.3s ease;
+    animation: ctaBreathe 3s ease-in-out infinite;
+  }
+
+  @keyframes ctaBreathe {
+    0%, 100% { box-shadow: 0 0 16px rgba(209,84,26,0.15), 0 0 4px rgba(209,84,26,0.1); }
+    50% { box-shadow: 0 0 24px rgba(209,84,26,0.3), 0 0 48px rgba(209,84,26,0.1); }
   }
 
   .video-after-cta .btn-primary:hover {
-    background: var(--accent);
-    color: #000;
-    box-shadow:
-      0 0 20px rgba(209,84,26,0.6),
-      0 0 40px rgba(209,84,26,0.3),
-      0 0 60px rgba(209,84,26,0.15);
+    border-color: rgba(209,84,26,0.8);
+    color: #fff;
+    box-shadow: 0 0 28px rgba(209,84,26,0.4), 0 0 56px rgba(209,84,26,0.15);
     transform: translateY(-2px);
+    animation: none;
   }
 
   /* ══════════════════════════════════════
@@ -961,6 +1002,45 @@
     background: #000;
   }
 
+  /* Play button overlay on video sliders */
+  .ba-play-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(0,0,0,0.25);
+    transition: background 0.3s ease;
+  }
+
+  .ba-play-overlay:hover { background: rgba(0,0,0,0.15); }
+
+  .ba-play-overlay.is-hidden { display: none; }
+
+  .ba-play-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(209,84,26,0.9);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 24px rgba(209,84,26,0.4), 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ba-play-overlay:hover .ba-play-circle {
+    transform: scale(1.1);
+    box-shadow: 0 0 32px rgba(209,84,26,0.6), 0 6px 16px rgba(0,0,0,0.4);
+  }
+
+  .ba-play-icon {
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 3px;
+  }
+
   .ba-toggle {
     position: absolute; top: 10px; right: 10px; z-index: 5;
     padding: 6px 10px; border-radius: 999px;
@@ -1138,7 +1218,8 @@
 
   .results-scroll-header { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 18px 0; text-align: center; }
   .results-scroll-label { font-family: 'Bebas Neue', sans-serif; font-size: clamp(24px, 3vw, 34px); letter-spacing: 0.08em; color: #ffffff; }
-  .results-scroll-arrow { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(209,84,26,0.5); background: rgba(255,255,255,0.03); color: var(--accent); font-size: 20px; line-height: 1; box-shadow: 0 0 10px rgba(209,84,26,0.18); }
+  .results-scroll-arrow { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(209,84,26,0.5); background: rgba(255,255,255,0.03); color: var(--accent); font-size: 20px; line-height: 1; box-shadow: 0 0 10px rgba(209,84,26,0.18); cursor: pointer; transition: all 0.2s; }
+  .results-scroll-arrow:hover { background: var(--accent); color: #000; box-shadow: 0 0 18px rgba(209,84,26,0.5); }
 
   .results-video-scroll .tscroll-nav-btn { display: flex; }
 
@@ -1158,37 +1239,22 @@
 
   .glitch-btn {
     position: relative; display: inline-block;
-    padding: 22px 55px; font-size: 30px; font-weight: bold;
-    color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
-    background: transparent; border: 2px solid #ff7a00; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 0 10px #ff7a00, 0 0 25px #ff7a00, 0 0 60px #ff7a00;
+    padding: 24px 64px; font-size: 18px; font-weight: 600;
+    color: var(--accent); text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+    background: #000; border: 1px solid rgba(209,84,26,0.4); border-radius: var(--radius); overflow: hidden;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 24px rgba(209,84,26,0.2), 0 0 8px rgba(209,84,26,0.15);
   }
-  .glitch-btn:hover { box-shadow: 0 0 20px #ff7a00, 0 0 40px #ff7a00, 0 0 100px #ff7a00; }
+  .glitch-btn:hover {
+    color: #fff;
+    border-color: rgba(209,84,26,0.8);
+    box-shadow: 0 0 32px rgba(209,84,26,0.4), 0 0 64px rgba(209,84,26,0.15), 0 8px 24px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
 
   .glitch-btn::before,
-  .glitch-btn::after {
-    content: attr(data-text); position: absolute; left: 0; top: 0;
-    width: 100%; height: 100%; padding: 22px 55px; border-radius: 12px;
-    color: #fff; background: transparent; pointer-events: none;
-  }
-  .glitch-btn::before { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); animation: glitchTop 1.2s infinite ease-in-out; }
-  .glitch-btn::after { clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); animation: glitchBottom 1.2s infinite ease-in-out; }
-
-  @keyframes glitchTop {
-    0%, 100% { transform: translate(0,0) skew(0deg); }
-    20% { transform: translate(-2px, -2px) skew(-5deg); }
-    40% { transform: translate(2px, 1px) skew(3deg); }
-    60% { transform: translate(-1px, 2px) skew(-2deg); }
-    80% { transform: translate(1px, -1px) skew(2deg); }
-  }
-
-  @keyframes glitchBottom {
-    0%, 100% { transform: translate(0,0) skew(0deg); }
-    20% { transform: translate(2px, 2px) skew(4deg); }
-    40% { transform: translate(-2px, -1px) skew(-3deg); }
-    60% { transform: translate(1px, -2px) skew(2deg); }
-    80% { transform: translate(-1px, 1px) skew(-2deg); }
-  }
+  .glitch-btn::after { display: none; }
 
   /* ══════════════════════════════════════
      FOOTER
@@ -1196,12 +1262,40 @@
   footer {
     border-top: 1px solid var(--border);
     padding: 48px 60px;
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px;
     font-family: 'DM Mono', monospace;
-    font-size: 10px; color: var(--muted);
-    letter-spacing: 2px; flex-wrap: wrap; gap: 16px;
+    font-size: 10px; color: #fff;
+    letter-spacing: 2px;
+    text-align: center;
   }
-  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--text); letter-spacing: 3px; }
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); letter-spacing: 4px; }
+
+  .footer-meta {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center;
+    font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.6);
+  }
+
+  .footer-meta span { white-space: nowrap; }
+
+  .footer-back-top {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 3px;
+    padding: 12px 28px;
+    border: 1px solid rgba(209,84,26,0.3);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .footer-back-top:hover {
+    border-color: rgba(209,84,26,0.6);
+    box-shadow: 0 0 16px rgba(209,84,26,0.2);
+    transform: translateY(-2px);
+  }
 
   .footer-sub { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 60px; }
   .footer-sub-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
@@ -2004,9 +2098,9 @@
 
 <!-- More results scroll -->
 <div class="results-scroll-header results-more-hint reveal" aria-hidden="true">
-  <span class="results-scroll-arrow">←</span>
+  <button class="results-scroll-arrow" id="results-arrow-prev" type="button" aria-label="Scroll left">←</button>
   <span class="results-scroll-label">AND HUNDREDS MORE...</span>
-  <span class="results-scroll-arrow">→</span>
+  <button class="results-scroll-arrow" id="results-arrow-next" type="button" aria-label="Scroll right">→</button>
 </div>
 
 <div class="tscroll-track results-video-scroll">
@@ -2448,22 +2542,22 @@
     <div class="philosophy-flow reveal">
       <div class="philosophy-step">
         <div class="philosophy-step-title">WHERE 99% FAIL</div>
-        <p class="philosophy-step-text">Most athletes spend years training calisthenics the wrong way — more volume, harder effort, no real progress.</p>
+        <p class="philosophy-step-text">Most athletes spend months—often years—approaching calisthenics with a "more is better" mentality. More sets, more intensity, more fatigue. This mindset, rooted in "no pain, no gain," often leads not to progress, but to stagnation—plateaus, chronic fatigue, and preventable injury.</p>
       </div>
 
       <div class="philosophy-step">
         <div class="philosophy-step-title">THE TRUTH</div>
-        <p class="philosophy-step-text">True strength isn't built through constant maximal effort. It's built through <strong>undulated submaximal training</strong> — managing intensity, fatigue, and coordination.</p>
+        <p class="philosophy-step-text">Strength is not built through excess, but through precision. It is a delicate process governed by the calculated balance of volume, frequency, and intensity. By training submaximally—intelligently managing fatigue, coordination, and output—we create the conditions for consistent, sustainable adaptation through undulating progression.</p>
       </div>
 
       <div class="philosophy-step">
         <div class="philosophy-step-title">THE SOLUTION</div>
-        <p class="philosophy-step-text">After 6 years of training and studying strength literature, Anton built <strong>SubMax</strong> — powerlifting principles fused with calisthenics skill development.</p>
+        <p class="philosophy-step-text">After over six years of studying strength science, followed by years of real-world application across hundreds of athletes, Anton developed the SubMax system. A framework that integrates proven powerlifting principles with the unique demands of calisthenics skill acquisition.</p>
       </div>
 
       <div class="philosophy-step philosophy-step--highlight">
         <div class="philosophy-step-title">THE RESULT</div>
-        <p class="philosophy-step-text">A centralized system that builds <strong>elite strength and advanced skills</strong> — structured, sustainable, for any starting point.</p>
+        <p class="philosophy-step-text">The result is a unified, adaptable system—engineered to build strength and mastery in complex calisthenics movements. A methodology that evolves with the individual, aligning with their structure, capacity, and goals—delivering results regardless of starting point.</p>
       </div>
     </div>
 
@@ -2507,17 +2601,21 @@
 ════════════════════════════════════════ -->
 <footer>
   <span class="footer-brand">ANTONTHNX</span>
-  <span>SUBMAX COACHING SYSTEM</span>
-  <span>© 2026 — ALL RIGHTS RESERVED</span>
+  <div class="footer-meta">
+    <span>SUBMAX COACHING SYSTEM</span>
+    <span>·</span>
+    <span>© 2026 ALL RIGHTS RESERVED</span>
+  </div>
+  <a href="#hero" class="footer-back-top">BACK TO TOP ↑</a>
 </footer>
 
 <div class="footer-sub">
   <div class="footer-sub-inner">
     <div class="footer-contact">
       <div class="footer-sub-label">CONTACT</div>
-      <a href="/cdn-cgi/l/email-protection#b3d2ddc7dcc0dbd29dd0d2dfdac0c7dbd6dddad0c0f3d4ded2dadf9dd0dcde" class="footer-link">
+      <a href="mailto:antosha.calisthenics@gmail.com" class="footer-link">
         <span class="footer-icon">✉</span>
-        <span class="__cf_email__" data-cfemail="71101f051e0219105f12101d18020519141f18120231161c10181d5f121e1c">[email&#160;protected]</span>
+        antosha.calisthenics@gmail.com
       </a>
       <a href="https://www.instagram.com/antonthnx/" target="_blank" rel="noopener" class="footer-link">
         <span class="footer-icon">
@@ -2538,7 +2636,6 @@
 <!-- ════════════════════════════════════════
      SCRIPTS (Consolidated)
 ════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // ═══════════════════════════════════════
 // CUSTOM CURSOR
@@ -3251,6 +3348,31 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 })();
 
 // ═══════════════════════════════════════
+// "AND HUNDREDS MORE" SCROLL ARROWS
+// ═══════════════════════════════════════
+(function() {
+  var prevArrow = document.getElementById('results-arrow-prev');
+  var nextArrow = document.getElementById('results-arrow-next');
+  var track = document.querySelector('.results-video-scroll .tscroll-inner');
+  if (!prevArrow || !nextArrow || !track) return;
+
+  function getStep() {
+    var card = track.querySelector('.tvcard');
+    if (!card) return 280;
+    var styles = window.getComputedStyle(track);
+    var gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  prevArrow.addEventListener('click', function() {
+    track.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  });
+  nextArrow.addEventListener('click', function() {
+    track.scrollBy({ left: getStep(), behavior: 'smooth' });
+  });
+})();
+
+// ═══════════════════════════════════════
 // VERTICAL PAGE PROGRESS SLIDER
 // ═══════════════════════════════════════
 (function() {
@@ -3303,6 +3425,19 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 // BEFORE/AFTER SLIDER TOGGLE (videos AND images)
 // ═══════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
+
+  // Global: pause all BA slider videos and restore their play overlays
+  function pauseAllSliders(exceptSlider) {
+    document.querySelectorAll('.ba-slider').forEach(function(s) {
+      if (s === exceptSlider) return;
+      // Pause all videos in this slider
+      s.querySelectorAll('video').forEach(function(v) { v.pause(); });
+      // Restore the play overlay
+      var overlay = s.querySelector('.ba-play-overlay');
+      if (overlay) overlay.classList.remove('is-hidden');
+    });
+  }
+
   document.querySelectorAll('.ba-slider').forEach(function(slider) {
     var beforeWrap = slider.querySelector('.ba-before');
     var afterWrap = slider.querySelector('.ba-after');
@@ -3313,6 +3448,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var beforeVideo = beforeWrap.querySelector('video');
     var afterVideo = afterWrap.querySelector('video');
     var isVideoSlider = !!(beforeVideo && afterVideo);
+
+    // Inject play button overlay for video sliders
+    var playOverlay = null;
+    if (isVideoSlider) {
+      playOverlay = document.createElement('div');
+      playOverlay.className = 'ba-play-overlay';
+      playOverlay.innerHTML = '<div class="ba-play-circle"><div class="ba-play-icon"></div></div>';
+      slider.appendChild(playOverlay);
+    }
 
     slider.style.position = 'relative';
     slider.style.overflow = 'hidden';
@@ -3335,6 +3479,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (p) p.catch(function() { video.load(); video.play().catch(function(){}); });
     }
 
+    // userInitiated tracks whether the user has clicked the toggle
+    var userInitiated = false;
+
     function showWrap(activeWrap, inactiveWrap, activeVideo, inactiveVideo) {
       activeWrap.classList.add('is-active');
       inactiveWrap.classList.remove('is-active');
@@ -3342,7 +3489,10 @@ document.addEventListener('DOMContentLoaded', function() {
       inactiveWrap.style.opacity = '0'; inactiveWrap.style.visibility = 'hidden'; inactiveWrap.style.pointerEvents = 'none'; inactiveWrap.style.zIndex = '1';
       if (isVideoSlider) {
         if (inactiveVideo) inactiveVideo.pause();
-        if (activeVideo) requestAnimationFrame(function() { activeVideo.currentTime = 0; safePlay(activeVideo); });
+        // Only play if user explicitly toggled — NOT on page init
+        if (userInitiated && activeVideo) {
+          requestAnimationFrame(function() { activeVideo.currentTime = 0; safePlay(activeVideo); });
+        }
       }
     }
 
@@ -3369,9 +3519,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toggle.addEventListener('click', function(e) {
       e.preventDefault(); e.stopPropagation();
+      userInitiated = true;
+      pauseAllSliders(slider);
+      if (playOverlay) playOverlay.classList.add('is-hidden');
       if (slider.dataset.view === 'before') showAfter();
       else showBefore();
     });
+
+    // Play overlay click — start the active video
+    if (playOverlay) {
+      playOverlay.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        userInitiated = true;
+        pauseAllSliders(slider);
+        playOverlay.classList.add('is-hidden');
+        var activeVideo = slider.querySelector('.ba-video.is-active video');
+        if (activeVideo) {
+          activeVideo.currentTime = 0;
+          safePlay(activeVideo);
+        }
+      });
+    }
 
     // Init: respect which wrap has is-active in the HTML
     if (afterWrap.classList.contains('is-active')) {
@@ -3383,77 +3551,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ═══════════════════════════════════════
-// VIDEO VISIBILITY OBSERVER (pause off-screen, play on-screen)
+// VIDEO VISIBILITY OBSERVER (pause off-screen only — NO auto-play)
 // ═══════════════════════════════════════
+// Videos stay on their poster thumbnail until the user explicitly
+// interacts (clicks toggle). This observer only pauses videos that
+// scroll out of view to save resources.
 document.addEventListener('DOMContentLoaded', function() {
-  var isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  function safePlay(video) {
-    if (!video) return;
-    // Ensure lazy sources are injected
-    if (typeof window.activateVideo === 'function') window.activateVideo(video);
-    var p = video.play();
-    if (p && typeof p.catch === 'function') p.catch(function(){});
-  }
-
-  // BA slider hover/scroll behavior
-  var sliders = document.querySelectorAll('.ba-slider');
-
-  function pauseAllBA() {
-    document.querySelectorAll('.ba-slider video').forEach(function(v) { v.pause(); });
-  }
-
-  function getActiveVideo(slider) {
-    return slider.querySelector('.ba-video.is-active video');
-  }
-
-  if (isDesktop) {
-    sliders.forEach(function(slider) {
-      slider.addEventListener('mouseenter', function() {
-        pauseAllBA();
-        var v = getActiveVideo(slider);
-        if (v) safePlay(v);
-      });
-      slider.addEventListener('mouseleave', function() {
-        var v = getActiveVideo(slider);
-        if (v) v.pause();
-      });
-    });
-  } else {
-    // Mobile: only play BA videos when >40% visible
-    var sliderObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        var slider = entry.target;
-        var activeVideo = getActiveVideo(slider);
-        slider.querySelectorAll('video').forEach(function(v) { v.pause(); });
-        if (entry.isIntersecting && activeVideo) safePlay(activeVideo);
-      });
-    }, { threshold: 0.4 });
-    sliders.forEach(function(s) { sliderObserver.observe(s); });
-  }
-
-  // General video visibility: pause when off-screen, resume when on-screen (if was playing)
-  var observedVideos = document.querySelectorAll('.ba-slider video, .tvcard video');
+  var allVideos = document.querySelectorAll('.ba-slider video, .tvcard video');
   var videoVisibilityObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      var video = entry.target;
-      if (entry.isIntersecting) {
-        // Only auto-resume if the video was in an active state
-        var inBA = video.closest('.ba-slider');
-        var inTestimonial = video.closest('.tvcard');
-        if (inBA) {
-          var wrap = video.closest('.ba-video');
-          if (wrap && wrap.classList.contains('is-active')) safePlay(video);
-        } else if (inTestimonial) {
-          var playBtn = inTestimonial.querySelector('.tvcard-play-btn');
-          if (playBtn && playBtn.classList.contains('is-playing')) safePlay(video);
-        }
-      } else {
-        video.pause();
+      if (!entry.isIntersecting) {
+        entry.target.pause();
       }
     });
-  }, { threshold: 0.25 });
-  observedVideos.forEach(function(v) { videoVisibilityObs.observe(v); });
+  }, { threshold: 0.1 });
+  allVideos.forEach(function(v) { videoVisibilityObs.observe(v); });
 });
 
 // ═══════════════════════════════════════
