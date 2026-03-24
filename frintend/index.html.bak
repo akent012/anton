@@ -1913,110 +1913,6 @@
     .results-mini-ba { aspect-ratio: 9/16; }
     .submax-cards { grid-template-columns: repeat(2, 1fr); }
   }
-  
-  /* ══════════════════════════════════════
-     TESTIMONIAL PLAY OVERLAY
-  ══════════════════════════════════════ */
-  .tcard-play-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background: rgba(0,0,0,0.25);
-    transition: background 0.3s ease;
-  }
-  .tcard-play-overlay:hover { background: rgba(0,0,0,0.15); }
-  .tcard-play-overlay.is-hidden { display: none; }
-  .tcard-play-overlay .ba-play-circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: rgba(209,84,26,0.9);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 24px rgba(209,84,26,0.4), 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .tcard-play-overlay:hover .ba-play-circle {
-    transform: scale(1.1);
-    box-shadow: 0 0 32px rgba(209,84,26,0.6), 0 6px 16px rgba(0,0,0,0.4);
-  }
-  .tcard-play-overlay .ba-play-icon {
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 10px 0 10px 18px;
-    border-color: transparent transparent transparent #fff;
-    margin-left: 3px;
-  }
-
-  
-  /* ══════════════════════════════════════
-     TESTIMONIAL VIDEO — LOCAL VIDEO FIXES
-  ══════════════════════════════════════ */
-  .tvcard-video-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border2);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .tvcard-video-wrap:hover {
-    border-color: rgba(209,84,26,0.4);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 16px rgba(209,84,26,0.15);
-  }
-
-  .tvcard-video-wrap video.tvcard-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #000;
-    border: 0;
-    border-radius: 12px;
-  }
-
-  /* Play overlay responsive sizing */
-  .tcard-play-overlay .ba-play-circle {
-    width: 56px; height: 56px;
-  }
-
-  @media (max-width: 768px) {
-    .tvcard-video-wrap {
-      border-radius: 20px;
-    }
-
-    .tvcard-video-wrap video.tvcard-video {
-      border-radius: 20px;
-    }
-
-    .tcard-play-overlay .ba-play-circle {
-      width: 52px; height: 52px;
-    }
-
-    .tcard-play-overlay .ba-play-icon {
-      border-width: 9px 0 9px 16px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .tcard-play-overlay .ba-play-circle {
-      width: 46px; height: 46px;
-    }
-
-    .tcard-play-overlay .ba-play-icon {
-      border-width: 8px 0 8px 14px;
-      margin-left: 2px;
-    }
-  }
-
   </style>
 </head>
 <body>
@@ -2428,119 +2324,74 @@
     <button class="tscroll-nav-btn tscroll-btn-next" id="tscroll-next" aria-label="Next">&#8250;</button>
 
     <div class="tscroll-inner">
-            <!-- 1. KENTO -->
+      <!-- 1. KENTO -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/kento.jpg">
-            <source data-src="Testimonials/kento.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788395?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="kento"></iframe>
         </div>
         <div class="tvcard-name">KENTO</div>
       </div>
 
       <!-- 2. JOSH -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/josh.jpg">
-            <source data-src="Testimonials/josh.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788204?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="josh"></iframe>
         </div>
         <div class="tvcard-name">JOSH</div>
       </div>
 
       <!-- 3. STEVEN -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/steven.jpg">
-            <source data-src="Testimonials/steven.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:178.89%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788362?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="steven"></iframe>
         </div>
         <div class="tvcard-name">STEVEN</div>
       </div>
 
       <!-- 4. SAM -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/sam.jpg">
-            <source data-src="Testimonials/sam.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788335?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="sam"></iframe>
         </div>
         <div class="tvcard-name">SAM</div>
       </div>
 
       <!-- 5. TRISTAN -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/tristan.jpg">
-            <source data-src="Testimonials/tristan.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788170?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="tristan"></iframe>
         </div>
         <div class="tvcard-name">TRISTAN</div>
       </div>
 
       <!-- 6. REID -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/reid.jpg">
-            <source data-src="Testimonials/reid.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788313?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="reid"></iframe>
         </div>
         <div class="tvcard-name">REID</div>
       </div>
 
       <!-- 7. GUS -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/gus.jpg">
-            <source data-src="Testimonials/gus.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175789485?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="gus"></iframe>
         </div>
         <div class="tvcard-name">GUS</div>
       </div>
 
       <!-- 8. TORYN -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/toryn.jpg">
-            <source data-src="Testimonials/toryn.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:176.67%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175788529?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="toryn"></iframe>
         </div>
         <div class="tvcard-name">TORYN</div>
       </div>
 
       <!-- 9. JOHN -->
       <div class="tvcard">
-        <div class="tvcard-video-wrap">
-          <video class="tvcard-video" muted playsinline preload="none" poster="Testimonials/Thumbnails/john.jpg">
-            <source data-src="Testimonials/john.mp4" type="video/mp4">
-          </video>
-          <div class="tcard-play-overlay">
-            <div class="ba-play-circle"><div class="ba-play-icon"></div></div>
-          </div>
+        <div class="tvcard-video-wrap" style="padding-top:177.78%;">
+          <iframe class="tvcard-video" loading="lazy" data-src="https://player.vimeo.com/video/1175791935?title=0&byline=0&portrait=0&badge=0&autopause=0&api=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="john"></iframe>
         </div>
         <div class="tvcard-name">JOHN</div>
       </div>
@@ -2850,6 +2701,73 @@
 })();
 
 // ═══════════════════════════════════════
+// VIMEO IFRAME MUTUAL EXCLUSION
+// ═══════════════════════════════════════
+// Uses the Vimeo Player postMessage API to pause all other Vimeo
+// iframes when one starts playing. No external SDK needed.
+(function() {
+  window.addEventListener('message', function(event) {
+    // Vimeo sends postMessage events with method/event data
+    var data;
+    try {
+      data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+    } catch(e) { return; }
+
+    // Vimeo fires event: "play" when a video starts
+    if (data && data.event === 'play') {
+      var playingIframe = null;
+      // Find which iframe sent the play event by matching origin
+      document.querySelectorAll('iframe.tvcard-video').forEach(function(iframe) {
+        try {
+          // The iframe that sent the message will have a matching contentWindow
+          if (iframe.contentWindow === event.source) {
+            playingIframe = iframe;
+          }
+        } catch(e) {}
+      });
+
+      // Pause all OTHER Vimeo iframes
+      if (playingIframe) {
+        document.querySelectorAll('iframe.tvcard-video').forEach(function(iframe) {
+          if (iframe !== playingIframe && iframe.contentWindow) {
+            try {
+              iframe.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
+            } catch(e) {}
+          }
+        });
+      }
+    }
+  });
+
+  // Enable Vimeo JS API listening on each iframe once it's loaded
+  // by adding ?api=1 origin param is already implicit in postMessage
+  function enableVimeoApi(iframe) {
+    if (!iframe || !iframe.src || iframe.dataset.vimeoApiReady === 'true') return;
+    iframe.dataset.vimeoApiReady = 'true';
+    iframe.addEventListener('load', function() {
+      try {
+        iframe.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'play' }), '*');
+      } catch(e) {}
+    });
+    // If already loaded
+    if (iframe.src && iframe.dataset.lazyActivated === 'true') {
+      try {
+        iframe.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'play' }), '*');
+      } catch(e) {}
+    }
+  }
+
+  // Observe for iframe activation and hook up API
+  var vimeoObserver = new MutationObserver(function() {
+    document.querySelectorAll('iframe.tvcard-video[src]').forEach(enableVimeoApi);
+  });
+  vimeoObserver.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['src'] });
+
+  // Also hook up any already-loaded iframes
+  document.querySelectorAll('iframe.tvcard-video[src]').forEach(enableVimeoApi);
+})();
+
+// ═══════════════════════════════════════
 // RADIO BUTTONS
 // ═══════════════════════════════════════
 document.querySelectorAll('.radio-group').forEach(function(group) {
@@ -2919,36 +2837,24 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   function syncTestimonialUi(card) {
     if (!card) return;
     var video = card.querySelector('.tvcard-video');
-    var playOverlay = card.querySelector('.tcard-play-overlay');
     var playBtn = card.querySelector('.tvcard-play-btn');
+    if (!video || !playBtn) return;
+
+    var icon = playBtn.querySelector('.tvcard-play-icon');
+    var label = playBtn.querySelector('.tvcard-play-label');
     var playing = !video.paused && !video.ended;
 
-    // Handle overlay-style play button
-    if (playOverlay) {
-      if (playing) {
-        playOverlay.classList.add('is-hidden');
-      } else {
-        playOverlay.classList.remove('is-hidden');
-      }
-    }
-
-    // Handle legacy button-style (if present)
-    if (playBtn) {
-      var icon = playBtn.querySelector('.tvcard-play-icon');
-      var label = playBtn.querySelector('.tvcard-play-label');
-      playBtn.setAttribute('aria-pressed', String(playing));
-      playBtn.setAttribute('aria-label', playing ? 'Pause testimonial video' : 'Play testimonial video');
-      playBtn.classList.toggle('is-playing', playing);
-      if (icon) icon.textContent = playing ? '❚❚' : '▶';
-      if (label) label.textContent = playing ? 'Pause' : 'Play';
-    }
+    playBtn.setAttribute('aria-pressed', String(playing));
+    playBtn.setAttribute('aria-label', playing ? 'Pause testimonial video' : 'Play testimonial video');
+    playBtn.classList.toggle('is-playing', playing);
+    if (icon) icon.textContent = playing ? '❚❚' : '▶';
+    if (label) label.textContent = playing ? 'Pause' : 'Play';
   }
 
   function pauseOtherTestimonials(activeVideo) {
     testimonialPlayers.forEach(function(card, video) {
       if (video === activeVideo) return;
       video.pause();
-      video.currentTime = 0;
       syncTestimonialUi(card);
     });
   }
@@ -2957,11 +2863,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     if (!card || card.dataset.videoReady === 'true') return;
 
     var video = card.querySelector('.tvcard-video');
-    var playOverlay = card.querySelector('.tcard-play-overlay');
     var playBtn = card.querySelector('.tvcard-play-btn');
-    // Support both overlay (new) and button (legacy)
-    var control = playOverlay || playBtn;
-    if (!video || !control) return;
+    if (!video || !playBtn) return;
 
     function toggleVideoPlayback() {
       var playing = !video.paused && !video.ended;
@@ -2975,7 +2878,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
       // Ensure lazy-loaded sources are injected before playing
       if (typeof window.activateVideo === 'function') window.activateVideo(video);
-      video.currentTime = 0;
       video.muted = false;
       var playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
@@ -3004,7 +2906,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
     testimonialPlayers.set(video, card);
 
-    control.addEventListener('click', function(event) {
+    playBtn.addEventListener('click', function(event) {
       event.preventDefault();
       event.stopPropagation();
       toggleVideoPlayback();

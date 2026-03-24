@@ -1950,73 +1950,6 @@
     margin-left: 3px;
   }
 
-  
-  /* ══════════════════════════════════════
-     TESTIMONIAL VIDEO — LOCAL VIDEO FIXES
-  ══════════════════════════════════════ */
-  .tvcard-video-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border2);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .tvcard-video-wrap:hover {
-    border-color: rgba(209,84,26,0.4);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 16px rgba(209,84,26,0.15);
-  }
-
-  .tvcard-video-wrap video.tvcard-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #000;
-    border: 0;
-    border-radius: 12px;
-  }
-
-  /* Play overlay responsive sizing */
-  .tcard-play-overlay .ba-play-circle {
-    width: 56px; height: 56px;
-  }
-
-  @media (max-width: 768px) {
-    .tvcard-video-wrap {
-      border-radius: 20px;
-    }
-
-    .tvcard-video-wrap video.tvcard-video {
-      border-radius: 20px;
-    }
-
-    .tcard-play-overlay .ba-play-circle {
-      width: 52px; height: 52px;
-    }
-
-    .tcard-play-overlay .ba-play-icon {
-      border-width: 9px 0 9px 16px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .tcard-play-overlay .ba-play-circle {
-      width: 46px; height: 46px;
-    }
-
-    .tcard-play-overlay .ba-play-icon {
-      border-width: 8px 0 8px 14px;
-      margin-left: 2px;
-    }
-  }
-
   </style>
 </head>
 <body>
@@ -2948,7 +2881,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     testimonialPlayers.forEach(function(card, video) {
       if (video === activeVideo) return;
       video.pause();
-      video.currentTime = 0;
       syncTestimonialUi(card);
     });
   }
@@ -2975,7 +2907,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
       // Ensure lazy-loaded sources are injected before playing
       if (typeof window.activateVideo === 'function') window.activateVideo(video);
-      video.currentTime = 0;
       video.muted = false;
       var playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
