@@ -2039,12 +2039,29 @@
     background-color: #000;
   }
 
+  #ig-toast {
+  position: fixed; left: 50%; bottom: 32px;
+  transform: translate(-50%, 20px);
+  z-index: 10000;
+  background: #000; color: #fff;
+  border: 1px solid rgba(209,84,26,0.6);
+  box-shadow: 0 0 20px rgba(209,84,26,0.3);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 24px; border-radius: 999px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center; max-width: 90vw;
+}
+#ig-toast.show { opacity: 1; transform: translate(-50%, 0); }
+#ig-toast strong { color: var(--accent); font-weight: 500; }
   </style>
 </head>
 <body>
 
 <!-- Custom cursor -->
 <div id="cursor"></div>
+<div id="ig-toast">Keyword <strong>SUBMAX</strong> copied. Paste it in the DM.</div>
 
 <!-- Canvas layers -->
 <div id="page-progress-slider">
@@ -2061,7 +2078,7 @@
 ════════════════════════════════════════ -->
 <nav id="main-nav">
   <a href="#hero" class="nav-brand">ANTONTHNX</a>
-  <a href="https://form.typeform.com/to/IeHZ2FIw" target="_blank" rel="noopener" class="nav-cta">APPLY NOW</a>
+  <a href="https://form.typeform.com/to/IeHZ2FIw" target="_blank" rel="noopener" class="nav-cta">DM ME</a>
 </nav>
 <!-- ════════════════════════════════════════
      SECTION 3B — CLIENT TESTIMONIALS (HORIZONTAL SCROLL)
@@ -2479,7 +2496,7 @@
 
     <!-- CTA -->
     <div class="hero-cta-wrap">
-      <a href="https://form.typeform.com/to/IeHZ2FIw" target="_blank" rel="noopener" class="btn-primary">APPLY FOR COACHING</a>
+      <a href="https://form.typeform.com/to/IeHZ2FIw" target="_blank" rel="noopener" class="btn-primary">DM "SUBMAX" TO APPLY</a>
       <a href="#video-section" class="btn-ghost">FULL BREAKDOWN ↓</a>
     </div>
 
@@ -3066,11 +3083,12 @@
     <div class="section-label reveal">APPLICATION</div>
     <h2 class="section-title reveal">APPLY TO WORK<br>WITH ANTON.</h2>
     <p class="section-subtitle reveal">
-      This is not a standard sign-up form. Only apply if you are serious about calisthenics and committed to breaking past your current limitations. Every application is reviewed personally by Anton and his team. If selected, you will be contacted within 48 hours with next steps.
+      Only reach out if you are serious about calisthenics and committed to breaking past your current limitations.
+      Send the keyword <strong style="color:var(--accent)">SUBMAX</strong> to <strong style="color:var(--accent)">@antonthnx</strong> on Instagram to start your application.
     </p>
 
     <div class="btn-wrapper">
-      <a href="https://form.typeform.com/to/IeHZ2FIw" target="_blank" class="glitch-btn" data-text="Apply Now">Apply Now</a>
+      <a href="https://ig.me/m/antonthnx" target="_blank" rel="noopener" class="glitch-btn">DM "SUBMAX" ON INSTAGRAM</a>
     </div>
   </div>
 </section>
@@ -3116,6 +3134,51 @@
      SCRIPTS (Consolidated)
 ════════════════════════════════════════ -->
 <script>
+
+  // ═══════════════════════════════════════
+// INSTAGRAM DM: COPY KEYWORD ON CLICK
+// ═══════════════════════════════════════
+(function() {
+  var KEYWORD = 'SUBMAX';
+  var toast = document.getElementById('ig-toast');
+  var hideTimer;
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  function copyKeyword() {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(KEYWORD).catch(function() { fallbackCopy(KEYWORD); });
+    } else {
+      fallbackCopy(KEYWORD);
+    }
+  }
+
+  function showToast() {
+    if (!toast) return;
+    toast.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function() { toast.classList.remove('show'); }, 6000);
+  }
+
+  document.querySelectorAll('a[href*="ig.me/m/"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      // Runs synchronously inside the click, so the browser allows the copy.
+      // No preventDefault: the link opens normally, so popup blockers don't interfere.
+      copyKeyword();
+      showToast();
+    });
+  });
+})();
 // ═══════════════════════════════════════
 // CUSTOM CURSOR
 // ═══════════════════════════════════════
