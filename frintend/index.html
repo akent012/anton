@@ -2276,6 +2276,39 @@
   .deal-item:nth-child(6), .deal-item:nth-child(9) { --lift: 14px; }
   .deal-item:nth-child(7), .deal-item:nth-child(8) { --lift: 42px; }
 
+  /* Followers don't matter — profile screenshot over 3 deal screenshots */
+  .fdm-block { margin: 8px 0 56px; text-align: center; }
+  .fdm-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent); opacity: 0.7; margin-bottom: 12px;
+  }
+  .fdm-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1; letter-spacing: 0.04em;
+    color: #fff; margin: 0 auto 36px;
+  }
+  .fdm-title span { color: var(--accent); }
+  .fdm-shot {
+    position: relative; aspect-ratio: 9 / 16;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; cursor: pointer;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .fdm-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .fdm-shot:hover { border-color: rgba(209,84,26,0.55); transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 18px rgba(209,84,26,0.2); }
+  .fdm-profile { width: 260px; margin: 0 auto 18px; border-color: rgba(209,84,26,0.45); box-shadow: 0 10px 28px rgba(0,0,0,0.35), 0 0 18px rgba(209,84,26,0.18); }
+  .fdm-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 28px;
+  }
+  .fdm-deals { display: flex; justify-content: center; gap: 18px; }
+  .fdm-deals .fdm-shot { flex: 0 0 220px; }
+
   /* Lightbox */
   #lightbox {
     position: fixed; inset: 0; z-index: 10001;
@@ -2352,6 +2385,10 @@
     .ig-track .tscroll-btn-next { right: 8px !important; }
     .deal-collage { gap: 10px; padding-bottom: 44px; }
     .deal-item { flex-basis: calc((100% - 2 * 10px) / 3); border-radius: 10px; }
+    .fdm-block { margin-bottom: 40px; }
+    .fdm-profile { width: 200px; }
+    .fdm-deals { gap: 10px; }
+    .fdm-deals .fdm-shot { flex: 1 1 0; min-width: 0; border-radius: 10px; }
     .deal-item:nth-child(n) { --lift: 0px; }
     .deal-item:nth-child(3n+2) { --lift: 26px; }
     .coach-proof-item { border-radius: 14px; }
@@ -2888,8 +2925,7 @@
     <div class="video-label">— THE BREAKDOWN —</div>
 
     <h3 class="video-title">
-      WHY THE CALISTHENICS COACHING<br>
-      SPACE IS STUCK AT 1%.
+      I Have Nothing to Gatekeep.
     </h3>
 
     <p class="video-sub">
@@ -2902,7 +2938,7 @@
     <iframe
       id="yt-iframe"
       width="560" height="315"
-      data-src="https://www.youtube.com/embed/-bUyw4IDxVI?si=oLGInJI9YzVNuFZ7"
+      data-src="https://www.youtube.com/embed/JMbon-D-FBU?si=1kF-PuhzfEEC6Ftx"
       title="Calisthenics Coach Mentorship — The Breakdown"
       frameborder="0"
       loading="lazy"
@@ -2926,7 +2962,7 @@
     <div class="section-label reveal">THE RECEIPTS</div>
     <h2 class="section-title reveal">I DON'T EXPECT YOU<br>TO TAKE MY WORD FOR IT.</h2>
     <p class="section-subtitle section-subtitle--wide reveal">
-      Every number on this page is documented. Payment processor dashboards, paid-in-full deals, and month-by-month revenue &mdash; unedited screenshots from my own accounts. Tap any to enlarge.
+      Every number on this page is documented. Payment processor dashboards, paid-in-full deals, and month-by-month revenue
     </p>
 
     <!--
@@ -2941,7 +2977,7 @@
       <div class="proof-item"><img src="Images/40k.jpg" alt="$40K+ in one week — revenue screenshot" loading="lazy" decoding="async"><div class="coach-proof-tag"><strong>$40K+ IN ONE WEEK</strong>Seven days of closes</div></div>
     </div>
 
-    <div class="coach-proof-note reveal">Screenshots are unedited &middot; Names and personal details of clients are blurred for privacy</div>
+    <div class="coach-proof-note reveal">Names and personal details of clients are blurred for privacy</div>
   </div>
 </section>
 
@@ -2953,7 +2989,7 @@
     <div class="section-label reveal">COACH RESULTS</div>
     <h2 class="section-title reveal">COACHES I'M ALREADY<br>SCALING.</h2>
     <p class="section-subtitle section-subtitle--wide reveal">
-      I'm currently working with 30+ calisthenics coaches. Some of the smallest accounts in my mentorship are outperforming the biggest coaches outside it. Their accounts, and the deals they're closing. Video testimonials from coaches coming soon.
+      I'm currently working with 30+ calisthenics coaches. Some of the smallest accounts in my mentorship are outperforming the biggest coaches outside it. Their accounts, and the deals they're closing.
     </p>
 
     <!--
@@ -3015,6 +3051,18 @@
         <div class="ig-card-img"><img src="Images/coach10.PNG" alt="Coach Instagram account 10" loading="lazy" decoding="async"></div>
         <div class="ig-card-handle">@gershonkhaimov</div>
       </div>
+      <div class="ig-card">
+        <div class="ig-card-img"><img src="Images/coach11.PNG" alt="Coach Instagram account 11" loading="lazy" decoding="async"></div>
+        <div class="ig-card-handle">@gernotwingenfeld</div>
+      </div>
+      <div class="ig-card">
+        <div class="ig-card-img"><img src="Images/coach12.PNG" alt="Coach Instagram account 12" loading="lazy" decoding="async"></div>
+        <div class="ig-card-handle">@peetperformance</div>
+      </div>
+      <div class="ig-card">
+        <div class="ig-card-img"><img src="Images/coach13.PNG" alt="Coach Instagram account 13" loading="lazy" decoding="async"></div>
+        <div class="ig-card-handle">@teddysthenics</div>
+      </div>
     </div>
     <div class="tscroll-fade-left"></div>
     <div class="tscroll-fade-right"></div>
@@ -3025,7 +3073,7 @@
       <span class="results-scroll-label" style="font-size: clamp(18px, 2vw, 24px); letter-spacing: 0.1em;">THE DEALS THEY'RE CLOSING</span>
     </div>
     <p class="section-subtitle reveal" style="margin-bottom: 28px;">
-      Payment notifications, paid-in-full confirmations, and DMs from coaches inside the mentorship. Tap any to enlarge.
+      Payment notifications, paid-in-full confirmations, and DMs from coaches inside the mentorship.
     </p>
 
     <!--
@@ -3044,6 +3092,24 @@
       <div class="deal-item"><img src="Images/deal9.PNG" alt="Closed deal screenshot 9" loading="lazy" decoding="async"></div>
     </div>
 
+    <!--
+      FOLLOWERS DON'T MATTER — one coach's profile screenshot, then 3 of his closed deals.
+      Profile: Images/followers-profile.PNG   Deals: Images/followers-deal1.PNG … followers-deal3.PNG   (phone aspect, 9:16)
+    -->
+    <div class="fdm-block reveal">
+      <div class="fdm-label">FOLLOWERS DON'T MATTER</div>
+      <h3 class="fdm-title">800 FOLLOWERS. <span>$4,000+ IN ONE DAY.</span></h3>
+
+      <div class="fdm-shot fdm-profile"><img src="Images/coach11.PNG" alt="Coach Instagram profile — 800 followers" loading="lazy" decoding="async"></div>
+      <p class="fdm-caption">The account</p>
+
+      <div class="fdm-deals">
+        <div class="fdm-shot"><img src="Images/ez1.PNG" alt="Closed deal 1" loading="lazy" decoding="async"></div>
+        <div class="fdm-shot"><img src="Images/ez2.PNG" alt="Closed deal 2" loading="lazy" decoding="async"></div>
+        <div class="fdm-shot"><img src="Images/ez3.PNG" alt="Closed deal 3" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+
     <div class="coach-cta-wrap reveal">
       <a href="https://ig.me/m/antonthnx" target="_blank" rel="noopener" class="btn-primary">APPLY FOR MENTORSHIP</a>
     </div>
@@ -3059,10 +3125,10 @@
     <div class="philosophy-header reveal">
       <div class="section-label">THE PROBLEM</div>
       <h2 class="philosophy-title">
-        THE CALISTHENICS COACHING SPACE<br>IS 99% PROBLEM-UNAWARE.
+        CALISTHENICS COACHES <br>ARE LIMITING THEMSELVES.
       </h2>
       <p class="philosophy-subtitle">
-        Most coaches aren't stuck because of their skill level, their follower count, or their programming. They're stuck because they don't know what is actually keeping them stuck.
+       Most calisthenics coaches spend years perfecting their skills, growing their audience, and posting more tutorials, convinced that eventually the money will follow. But none of that matters if your content isn't turning viewers into buyers.
       </p>
     </div>
 
@@ -3969,7 +4035,7 @@
         el.addEventListener('mouseleave', function() { cursor.classList.remove('hovering'); });
       });
     }
-    addHover('a, button, .radio-opt, .skill-badge, input, textarea, select, .tcard, .system-card, .coach-proof-item, .proof-item, .deal-item, .ig-card');
+    addHover('a, button, .radio-opt, .skill-badge, input, textarea, select, .tcard, .system-card, .coach-proof-item, .proof-item, .deal-item, .fdm-shot, .ig-card');
   }
 })();
 
@@ -5011,7 +5077,7 @@ document.addEventListener('DOMContentLoaded', function() {
     img.src = '';
   }
 
-  document.querySelectorAll('.coach-proof-item, .proof-item, .deal-item, .ig-card').forEach(function(item) {
+  document.querySelectorAll('.coach-proof-item, .proof-item, .deal-item, .fdm-shot, .ig-card').forEach(function(item) {
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
     var src = item.querySelector('img');
